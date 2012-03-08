@@ -1,0 +1,66 @@
+\documentclass{seminar}
+\begin{document}
+    \begin{slide}
+        \begin{center}{\LARGE What Is Twisted}\end{center}
+        \vspace{1em}
+        \begin{itemize}
+            \item Twisted is an event driven, nonblocking, networking framework
+            \item Makes it easy to develop clients and servers
+            \item Built-in support for a large number of protocols
+        \end{itemize}
+    \end{slide}
+
+    \begin{slide}
+        \begin{center}{\LARGE Protocols, Factories, Endpoints, and Reactors}\end{center}
+        \vspace{1em}
+        \begin{itemize}
+            \item Protocol
+                \begin{itemize}
+                    \item Represents a single connection
+                    \item Has callbacks that you implement to respond to various connection events
+                \end{itemize}
+
+            \item Factory
+                \begin{itemize}
+                    \item Factory pattern that creates Protocol objects as needed
+                    \item Stores cross-protocol state
+                \end{itemize}
+
+            \item Endpoint
+                \begin{itemize}
+                    \item Represents a host/port pair
+                    \item Has a factory and a reactor hooked up to it
+                \end{itemize}
+            
+
+
+        \end{itemize}
+    \end{slide}
+    
+    \begin{slide}
+        \begin{center}{\LARGE Protocols, Factories, Endpoints, and Reactors (cont'd)}\end{center}
+        \vspace{1em}
+        \begin{itemize}
+            \item Reactor
+                \begin{itemize}
+                    \item Event loop
+                    \item Listens for connections and uses factory to create new protocol objects as needed
+                    \item Triggers protocol callbacks as necessary
+                \end{itemize}
+        \end{itemize}
+    \end{slide}
+
+    \begin{slide}
+        \begin{center}{\LARGE Twisted IRC Client}\end{center}
+        \vspace{1em}
+        \begin{itemize}
+            \item Twisted includes an IRC client class ({\ttfamily twisted.words.internet.IRCClient})
+            \begin{itemize}
+                \item Subclass {\ttfamily IRCClient} to make your client class
+                \item Implement {\ttfamily signedOn} and {\ttfamily privmsg} methods - these are called as event handlers
+            \end{itemize}
+            \item Hook up your subclass to factory as usual
+        \end{itemize}
+    \end{slide}
+
+\end{document}
